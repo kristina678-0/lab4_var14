@@ -1,0 +1,73 @@
+//4.1 в заданной строке посчитать количество точек и запятых.
+
+#include <iostream>
+#include <string>
+#include <algorithm>
+ 
+ 
+struct is_punct {
+    
+    bool operator ()(std::string::value_type ch) const {
+        return punct.find(ch) != std::string::npos;
+    }
+    
+    explicit is_punct(std::string const& p) : punct(p) {}
+    
+private:
+    std::string punct;
+};
+ 
+ 
+int main() {
+    std::string str;
+    getline(std::cin, str);
+    std::cout << std::count_if(str.begin(), str.end(), is_punct(".,:;'\"()!?-")) << std::endl;
+}
+
+
+
+//4.2 В заданой строке удалить первый символ «о», который найдётся в строке 
+ 
+int main() 
+{
+	string a;
+	getline(cin,a);
+	int k,m;
+	m=0;
+	for(int i=0;i<a.length();i++)
+		{
+			if(a[i]=='о')
+				{
+					k=i;
+					break;
+				}
+			m++;
+		}
+	if(m==a.length()) cout<<"Нет о ";
+	else
+		{
+			a.erase(k,1);
+			cout<<a;
+		}
+return 0;
+}
+
+
+//4.3 В заданой строке заменить каждый символ «*» числом, соответствующим номеру по порядку вхождения этого символа в строку 
+
+#include <iostream>
+ 
+using namespace std;
+ 
+int main(int argc, char** argv) {
+    string str;
+    int pes;
+    int countSymb = 0, tmpCount = 0;
+    cout << "input symbols array: ";
+        cin >> str;
+    for(int i = 0; i < str.size(); i++)
+       if(str[i] == '*') pes = '0' + i;
+       cout<< pes<<endl;
+       system("pause");
+    return 0;
+}
